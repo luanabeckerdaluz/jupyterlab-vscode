@@ -39,19 +39,7 @@ RUN curl -fOL https://github.com/coder/code-server/releases/download/v$CODE_VERS
     && rm -f code-server_${CODE_VERSION}_amd64.deb
 RUN /opt/conda/bin/conda install -c conda-forge jupyter-vscode-proxy
 
-# RUN /opt/conda/bin/conda install -c conda-forge jupyter-server-proxy
-# RUN /opt/conda/bin/conda install -c manics websockify && \
-#     pip install git+https://github.com/yuvipanda/jupyter-desktop-server.git
-
-# conda install jupyter-server-proxy jupyter-vscode-proxy code-server
- 
-# Switch back to jovyan to avoid accidental container runs as root
-# RUN R -e "options(warn=2); install.packages('IRkernel')"
-# RUN R -e "options(warn=2); IRkernel::installspec()"
-
-
 USER ${NB_UID}
-
 
 # RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-toolsai.jupyter
